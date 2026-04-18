@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: docmind-rag
+    env: docker
+    plan: free # Change to 'starter' if you need more RAM/CPU
+    region: ohio # Change to your preferred region
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Set this in the Render dashboard manually or during setup
+      - key: PORT
+        value: 8000
+    disk:
+      name: docmind-storage
+      mountPath: /app/chroma_db
+      sizeGB: 1
+    autoDeploy: true
